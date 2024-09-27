@@ -1,0 +1,16 @@
+{
+  "name": "covid-player",
+  "private": "true",
+  "module": "index.ts",
+  "type": "module",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "clean": "rm -rf **/node_modules **/bun.lockb"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
