@@ -5,6 +5,7 @@
   "type": "module",
   "workspaces": ["packages/*"],
   "scripts": {
+    "server:start": "bun run --filter @covid-player/server start",
     "clean": "rm -rf **/node_modules **/bun.lockb"
   },
   "devDependencies": {
