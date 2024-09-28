@@ -2,6 +2,21 @@ import type { UserDTO, ChatPacketDTO } from "@covid-player/shared";
 import type { IDatabase, RoomDTO } from "@covid-player/database";
 
 export default class RoomDictionary implements IDatabase {
+	private static instance?: RoomDictionary;
+
+	public static start() {
+		if (!RoomDictionary.instance) {
+			RoomDictionary.instance = new RoomDictionary();
+		}
+		return RoomDictionary.instance;
+	}
+
+	private db: { [key: string]: RoomDTO };
+
+	private constructor() {
+		this.db = {};
+	}
+
 	saveUser(user: UserDTO): Promise<void> {
 		throw new Error("Method not implemented.");
 	}
@@ -17,12 +32,4 @@ export default class RoomDictionary implements IDatabase {
 	getMessages(): Promise<ChatPacketDTO[]> {
 		throw new Error("Method not implemented.");
 	}
-
-	public static start() {
-		return new RoomDictionary();
-	}
-
-	private db: {[key: string]: RoomDTO} = {};
-
-	private constructor() {}
 }

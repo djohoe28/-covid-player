@@ -3,8 +3,13 @@ import type { IDatabase } from "@covid-player/database";
 import { Database } from "bun:sqlite";
 
 export default class RoomDatabase implements IDatabase {
+	private static instance?: RoomDatabase;
+
 	public static start() {
-		return new RoomDatabase();
+		if (!RoomDatabase.instance) {
+			RoomDatabase.instance = new RoomDatabase();
+		}
+		return RoomDatabase.instance;
 	}
 
 	private db: Database;
