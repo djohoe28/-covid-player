@@ -4,7 +4,7 @@ import type { IDatabase, RoomDTO } from "@covid-player/database";
 export default class RoomDictionary implements IDatabase {
 	private static instance?: RoomDictionary;
 
-	public static start() {
+	public static getInstance() {
 		if (!RoomDictionary.instance) {
 			RoomDictionary.instance = new RoomDictionary();
 		}

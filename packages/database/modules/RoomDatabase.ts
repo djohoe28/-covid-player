@@ -5,7 +5,7 @@ import { Database } from "bun:sqlite";
 export default class RoomDatabase implements IDatabase {
 	private static instance?: RoomDatabase;
 
-	public static start() {
+	public static getInstance() {
 		if (!RoomDatabase.instance) {
 			RoomDatabase.instance = new RoomDatabase();
 		}
