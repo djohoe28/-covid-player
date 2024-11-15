@@ -1,7 +1,8 @@
 import type { UserDTO, ChatPacketDTO } from "@covid-player/shared";
 import type { IDatabase, RoomDTO } from "@covid-player/database";
+import { NotImplementedError } from "@covid-player/shared";
 
-export default class RoomDictionary implements IDatabase {
+export class RoomDictionary implements IDatabase {
 	private static instance?: RoomDictionary;
 
 	public static getInstance() {
@@ -18,18 +19,18 @@ export default class RoomDictionary implements IDatabase {
 	}
 
 	saveUser(user: UserDTO): Promise<void> {
-		throw new Error("Method not implemented.");
+		throw new NotImplementedError();
 	}
 	getUser(userId: string): Promise<UserDTO | undefined> {
-		throw new Error("Method not implemented.");
+		throw new NotImplementedError();
 	}
 	getUsers(): Promise<UserDTO[]> {
-		throw new Error("Method not implemented.");
+		throw new NotImplementedError();
 	}
 	saveMessage(message: ChatPacketDTO): Promise<void> {
-		throw new Error("Method not implemented.");
+		throw new NotImplementedError();
 	}
 	getMessages(): Promise<ChatPacketDTO[]> {
-		throw new Error("Method not implemented.");
+		throw new NotImplementedError();
 	}
 }
