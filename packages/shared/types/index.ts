@@ -1,1 +1,1 @@
-export * from "./VideoActionType"
+export * from "./VideoActionType";

@@ -1,5 +1,5 @@
 export type SourceDTO = {
-  isFile: boolean;
-  src: string;
-  duration: number;
+	isFile: boolean;
+	src: string;
+	duration: number;
 };

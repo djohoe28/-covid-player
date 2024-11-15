@@ -1,5 +1,5 @@
 export type RoomDTO = {
-	users: UserDTO[],
-	messages: ChatPacketDTO[],
-	videoState: VideoState
-}
+	users: UserDTO[];
+	messages: ChatPacketDTO[];
+	videoState: VideoState;
+};

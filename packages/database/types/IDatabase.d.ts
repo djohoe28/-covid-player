@@ -1,4 +1,4 @@
-import type { ChatPacketDTO, UserDTO} from "@covid-player/shared";
+import type { ChatPacketDTO, UserDTO } from "@covid-player/shared";
 
 export interface IDatabase {
 	saveUser(user: UserDTO): Promise<void>;
