@@ -40,8 +40,8 @@ export default class CoVidServer {
 				async open(ws) {},
 				async message(ws, message) {
 					let parsed = JSON.parse(String(message)) as PacketDTO;
-					switch (parsed.type) {
-						// TODO: type guard
+					switch (parsed.kind) {
+						// TODO: Discriminated Union; use Type Guards?
 						case "user":
 							break;
 						case "chat":
