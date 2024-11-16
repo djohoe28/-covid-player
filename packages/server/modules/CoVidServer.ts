@@ -5,7 +5,7 @@ import type { IDatabase } from "@covid-player/database";
 import { RoomDatabase } from "@covid-player/database/modules/RoomDatabase";
 import type {
 	ChatEvent,
-	Packet,
+	RoomEvent,
 	UserEvent,
 	VideoEvent,
 } from "@covid-player/shared";
@@ -43,7 +43,7 @@ export class CoVidServer {
 			websocket: {
 				async open(ws) {},
 				async message(ws, message) {
-					let parsed = JSON.parse(String(message)) as Packet;
+					let parsed = JSON.parse(String(message)) as RoomEvent;
 					switch (parsed.kind) {
 						// TODO: Discriminated Union; use Type Guards?
 						case "user":

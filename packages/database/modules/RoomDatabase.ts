@@ -1,7 +1,7 @@
 import type {
-	UserDTO,
 	ChatEvent,
 	VideoEvent,
+	UserEvent,
 } from "@covid-player/shared";
 import type { IDatabase } from "@covid-player/database";
 import { Database } from "bun:sqlite";
@@ -23,13 +23,13 @@ export class RoomDatabase implements IDatabase {
 		this.db = new Database("db.sqlite");
 	}
 
-	saveUser(user: UserDTO): Promise<void> {
+	saveUser(user: UserEvent): Promise<void> {
 		throw new NotImplementedError();
 	}
-	getUser(userId: string): Promise<UserDTO | undefined> {
+	getUser(userId: string): Promise<UserEvent | undefined> {
 		throw new NotImplementedError();
 	}
-	getUsers(): Promise<UserDTO[]> {
+	getUsers(): Promise<UserEvent[]> {
 		throw new NotImplementedError();
 	}
 	saveMessage(message: ChatEvent): Promise<void> {
