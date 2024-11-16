@@ -1,14 +1,10 @@
 import type { Server } from "bun";
-import type { SocketDTO } from "../models";
+import type { RoomEvent } from "@covid-player/shared";
+import type { BaseRoomCollection } from "@covid-player/database";
+import type { SocketDTO } from "@covid-player/server";
 import { randomUUID } from "crypto";
-import type { IDatabase } from "@covid-player/database";
-import { RoomDatabase } from "@covid-player/database/modules/RoomDatabase";
-import type {
-	ChatEvent,
-	RoomEvent,
-	UserEvent,
-	VideoEvent,
-} from "@covid-player/shared";
+import { RoomDatabase } from "@covid-player/database";
+
 export class CoVidServer {
 	private static instance?: CoVidServer;
 
@@ -19,7 +15,7 @@ export class CoVidServer {
 		return CoVidServer.instance;
 	}
 
-	public database: IDatabase;
+	public database: BaseRoomCollection;
 	public server: Server;
 
 	private constructor() {
@@ -44,26 +40,10 @@ export class CoVidServer {
 				async open(ws) {},
 				async message(ws, message) {
 					let parsed = JSON.parse(String(message)) as RoomEvent;
-					switch (parsed.kind) {
-						// TODO: Discriminated Union; use Type Guards?
-						case "user":
-							await CoVidServer.getInstance().database.saveUser(
-								parsed as UserEvent
-							);
-							break;
-						case "video":
-							await CoVidServer.getInstance().database.saveVideoState(
-								parsed as VideoEvent
-							);
-							break;
-						case "chat":
-							await CoVidServer.getInstance().database.saveMessage(
-								parsed as ChatEvent
-							);
-							break;
-						default:
-							break;
-					}
+					CoVidServer.getInstance().database.handleEvent(
+						ws.data.roomId,
+						parsed
+					); // TODO: Is there a way to reference `this` here?
 				},
 				async close(ws, code, reason) {},
 			},

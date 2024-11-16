@@ -1,2 +1,2 @@
-export * from "./IDatabase";
+export * from "./IRoomCollection";
 export * from "./RoomDTO";

@@ -1,13 +1,9 @@
-import type {
-	UserDTO,
-	ChatEvent,
-	VideoEvent,
-	UserEvent,
-} from "@covid-player/shared";
-import type { IDatabase, RoomDTO } from "@covid-player/database";
+import type { ChatEvent, VideoEvent, UserEvent } from "@covid-player/shared";
+import type { RoomDTO } from "@covid-player/database";
+import { BaseRoomCollection } from "@covid-player/database";
 import { NotImplementedError } from "@covid-player/shared";
 
-export class RoomDictionary implements IDatabase {
+export class RoomDictionary extends BaseRoomCollection {
 	private static instance?: RoomDictionary;
 
 	public static getInstance() {
@@ -20,28 +16,29 @@ export class RoomDictionary implements IDatabase {
 	private db: { [key: string]: RoomDTO };
 
 	private constructor() {
+		super();
 		this.db = {};
 	}
 
-	saveUser(user: UserEvent): Promise<void> {
+	saveUser(roomId: string, user: UserEvent): Promise<void> {
 		throw new NotImplementedError();
 	}
 	getUser(userId: string): Promise<UserEvent | undefined> {
 		throw new NotImplementedError();
 	}
-	getUsers(): Promise<UserEvent[]> {
+	getUsersInRoom(roomId: string): Promise<UserEvent[]> {
 		throw new NotImplementedError();
 	}
-	saveMessage(message: ChatEvent): Promise<void> {
+	saveMessage(roomId: string, message: ChatEvent): Promise<void> {
 		throw new NotImplementedError();
 	}
-	getMessages(): Promise<ChatEvent[]> {
+	getMessages(roomId: string): Promise<ChatEvent[]> {
 		throw new NotImplementedError();
 	}
-	saveVideoState(videoState: VideoEvent): Promise<void> {
+	saveVideoEvent(roomId: string, videoEvent: VideoEvent): Promise<void> {
 		throw new NotImplementedError();
 	}
-	getVideoState(): Promise<VideoEvent> {
+	getVideoEvent(roomId: string): Promise<VideoEvent> {
 		throw new NotImplementedError();
 	}
 }
