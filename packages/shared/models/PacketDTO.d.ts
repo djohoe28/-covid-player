@@ -3,4 +3,5 @@ export interface PacketDTO {
 	sender: UserDTO;
 	timestamp: number;
 	data: any;
+	roomId: string; // TODO: Remove?
 }
