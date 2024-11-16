@@ -1,7 +1,7 @@
-import type { UserDTO, ChatEvent, VideoState } from "@covid-player/shared";
+import type { ChatEvent, VideoEvent, UserEvent } from "@covid-player/shared";
 
 export type RoomDTO = {
-	users: UserDTO[];
-	messages: ChatEvent[];
-	videoState: VideoState;
+	userEvents: UserEvent[];
+	chatEvents: ChatEvent[];
+	videoEvent: VideoEvent;
 };
