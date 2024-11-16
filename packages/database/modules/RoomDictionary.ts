@@ -1,7 +1,7 @@
 import type {
 	UserDTO,
-	ChatPacketDTO,
-	VideoPacketDTO,
+	ChatEvent,
+	VideoEvent,
 } from "@covid-player/shared";
 import type { IDatabase, RoomDTO } from "@covid-player/database";
 import { NotImplementedError } from "@covid-player/shared";
@@ -31,16 +31,16 @@ export class RoomDictionary implements IDatabase {
 	getUsers(): Promise<UserDTO[]> {
 		throw new NotImplementedError();
 	}
-	saveMessage(message: ChatPacketDTO): Promise<void> {
+	saveMessage(message: ChatEvent): Promise<void> {
 		throw new NotImplementedError();
 	}
-	getMessages(): Promise<ChatPacketDTO[]> {
+	getMessages(): Promise<ChatEvent[]> {
 		throw new NotImplementedError();
 	}
-	saveVideoState(videoState: VideoPacketDTO): Promise<void> {
+	saveVideoState(videoState: VideoEvent): Promise<void> {
 		throw new NotImplementedError();
 	}
-	getVideoState(): Promise<VideoPacketDTO> {
+	getVideoState(): Promise<VideoEvent> {
 		throw new NotImplementedError();
 	}
 }

@@ -2,10 +2,14 @@ import type { Server } from "bun";
 import type { SocketDTO } from "../models";
 import { randomUUID } from "crypto";
 import type { IDatabase } from "@covid-player/database";
-import RoomDatabase from "@covid-player/database/modules/RoomDatabase";
-import type { ChatPacketDTO } from "@covid-player/shared";
-import type PacketDTO from "@covid-player/shared/models/PacketDTO";
-export default class CoVidServer {
+import { RoomDatabase } from "@covid-player/database/modules/RoomDatabase";
+import type {
+	ChatEvent,
+	Packet,
+	UserEvent,
+	VideoEvent,
+} from "@covid-player/shared";
+export class CoVidServer {
 	private static instance?: CoVidServer;
 
 	public static getInstance() {
@@ -39,17 +43,23 @@ export default class CoVidServer {
 			websocket: {
 				async open(ws) {},
 				async message(ws, message) {
-					let parsed = JSON.parse(String(message)) as PacketDTO;
+					let parsed = JSON.parse(String(message)) as Packet;
 					switch (parsed.kind) {
 						// TODO: Discriminated Union; use Type Guards?
 						case "user":
-							break;
-						case "chat":
-							await CoVidServer.getInstance().database.saveMessage(
-								parsed as ChatPacketDTO
+							await CoVidServer.getInstance().database.saveUser(
+								parsed as UserEvent
 							);
 							break;
 						case "video":
+							await CoVidServer.getInstance().database.saveVideoState(
+								parsed as VideoEvent
+							);
+							break;
+						case "chat":
+							await CoVidServer.getInstance().database.saveMessage(
+								parsed as ChatEvent
+							);
 							break;
 						default:
 							break;

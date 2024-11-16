@@ -1,2 +1,2 @@
-export * from "./Packet";
+export * from "./RoomEventType";
 export * from "./VideoActionType";
