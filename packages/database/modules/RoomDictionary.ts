@@ -20,8 +20,11 @@ export class RoomDictionary extends BaseRoomCollection {
 		this.db = {};
 	}
 
-	saveUser(roomId: string, user: UserEvent): Promise<void> {
-		throw new NotImplementedError();
+	saveUser(roomId: string, event: UserEvent): Promise<void> {
+		// TODO: Improve?
+		this.db[roomId].userEvents.filter((e) => e.data !== event.data);
+		this.db[roomId].userEvents.push(event);
+		return Promise.resolve();
 	}
 	getUser(userId: string): Promise<UserEvent | undefined> {
 		throw new NotImplementedError();
