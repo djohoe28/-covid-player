@@ -1,5 +1,9 @@
 name: Install Dependencies
 run-name: ${{ github.actor }} is installing dependencies...
+on:
+  push:
+    paths:
+      - '**/package.json'
 jobs:
   bun-install:
     name: bun install
