@@ -8,7 +8,8 @@
 		"apps/*"
 	],
 	"scripts": {
-		"server:start": "bun run --filter @covid-player/server start"
+		"server:start": "bun run --filter @covid-player/server start",
+		"echo": "echo 'Hello, World!'"
 	},
 	"devDependencies": {
 		"@types/bun": "latest"
