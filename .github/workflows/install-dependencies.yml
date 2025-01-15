@@ -1,0 +1,15 @@
+name: Install Dependencies
+run-name: ${{ github.actor }} is installing dependencies...
+jobs:
+  bun-install:
+    name: bun install
+    runs-on: ubuntu-latest
+    steps:
+      # ...
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+
+      # run any `bun` or `bunx` command
+      - run: echo "Installing dependencies..."
+      - run: bun install
+      - run: echo "Dependencies installed successfully!"
