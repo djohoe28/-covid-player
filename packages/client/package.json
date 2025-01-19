@@ -1,0 +1,9 @@
+{
+	"name": "@covid-player/client",
+	"scripts": {
+		"start": "bun run index.ts"
+	},
+	"dependencies": {
+		"@covid-player/shared": "workspace:*"
+	}
+}
