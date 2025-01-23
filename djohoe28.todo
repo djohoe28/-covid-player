@@ -1,1 +1,2 @@
 [ ] Refactor `packages` -> `apps` & `libs`
+[ ] Models: Readonly<Partial<IModel>> ?
