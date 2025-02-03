@@ -1,6 +1,6 @@
 /**
  * Represents the state of a video.
- * TODO: Used in conjunction / combined with Source model & Packet model?
+ * // TODO: Used in conjunction / combined with Source model & Packet model?
  */
 export default interface VideoState {
 	/**
