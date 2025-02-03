@@ -1,6 +1,8 @@
 /**
  * Data Access Object (DAO) interface.
  * 
+ * @todo // TODO: Replace T with DTO<T> ?
+ * 
  * @see https://en.wikipedia.org/wiki/Data_access_object
  * 
  * @template T Type of item to store in database.
@@ -27,6 +29,8 @@ export default interface DAO<T, K> {
 	 * - If a key is not provided: the item's key will be used.
 	 * 
 	 * @todo // TODO: What happens if the given item's key is different from the key parameter?
+	 * 
+	 * @example [{ key: 1, name: "Alice" }] -> update({ key: 1, name: "Bob" }, 2) -> [{ key: 2, name: "Bob" }]
 	 * 
 	 * @param item Item to update in database.
 	 * @param key Key to update item in database.
