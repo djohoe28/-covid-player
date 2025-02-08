@@ -1,8 +1,13 @@
+import type Source from "@shared/models/Source.model";
+
 /**
  * Represents the state of a video.
- * // TODO: Used in conjunction / combined with Source model & Packet model?
  */
-export default interface VideoState {
+export default interface MediaState {
+	/**
+	 * The object representing the video source.
+	 */
+	src: Source;
 	/**
 	 * Whether the video is playing.
 	 */
