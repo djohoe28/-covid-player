@@ -1,4 +1,4 @@
-import type { ChatPacketKind, VideoPacketKind, PacketKind } from "@shared/enums/PacketKind.enums";
+import type { ChatPacketKind, VideoPacketKind, PacketKind, ServerPacketKind, UserPacketKind } from "@shared/enums/PacketKind.enums";
 import type MediaState from "@shared/models/MediaState.model";
 
 interface BasePacket {
@@ -30,4 +30,13 @@ interface MediaStatePacket extends BasePacket {
 	payload: MediaState;
 }
 
-export type Packet = ChatPacket | MediaStatePacket; // TODO: Equivalent to using `BasePacket`...
+interface UserPacket extends BasePacket {
+	kind: UserPacketKind;
+}
+
+interface ServerPacket extends BasePacket {
+	kind: ServerPacketKind;
+}
+
+// TODO: Equivalent to using `BasePacket`...
+export type Packet = ChatPacket | MediaStatePacket | UserPacket | ServerPacket;
